@@ -7,6 +7,7 @@ export const PRODUCTS_QUERY = gql`
         node {
           id
           name
+          slug
         }
         cursor
       }

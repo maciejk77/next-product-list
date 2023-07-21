@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 const ProductListItem = ({ item }: { item: any }) => {
-  const { id, name } = item;
+  const { id, name, slug } = item;
 
   return (
-    <Link href={`/product/${id}`}>
+    <Link href={`/product/${slug}`}>
       <div
         style={{
           border: '1px solid black',

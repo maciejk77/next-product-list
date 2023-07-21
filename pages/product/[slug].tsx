@@ -6,12 +6,12 @@ import { PRODUCT_QUERY } from './gql';
 const Product = () => {
   const { query, back } = useRouter();
   const { data, loading } = useQuery(PRODUCT_QUERY, {
-    variables: { id: query['productId'] },
+    variables: { slug: query['slug'] },
   });
 
   if (loading) return <Loader />;
 
-  const { id, name } = data.product;
+  const { id, name, slug } = data.product;
 
   return (
     <div>
@@ -19,6 +19,7 @@ const Product = () => {
       <h1>Product</h1>
       <div>ID: {id}</div>
       <div>NAME: {name}</div>
+      <div>SLUG: {slug}</div>
     </div>
   );
 };
