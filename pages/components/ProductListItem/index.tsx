@@ -1,4 +1,4 @@
-const Product = ({ item }: { item: any }) => {
+const ProductListItem = ({ item }: { item: any }) => {
   const { id, name } = item;
 
   return (
@@ -8,4 +8,4 @@ const Product = ({ item }: { item: any }) => {
   );
 };
 
-export default Product;
+export default ProductListItem;

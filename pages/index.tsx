@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import ProductsList from './components/ProductList';
+import Products from './components/Products';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h2 className={styles.title}>Products</h2>
-        <ProductsList />
+        <Products />
       </main>
 
       <footer className={styles.footer}>Footer here</footer>
