@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { forwardRef } from 'react';
 
-const ProductListItem = ({ item }: { item: any }) => {
+const ProductListItem = forwardRef(({ item }: any, ref: any) => {
   const { id, name, slug } = item;
 
   return (
@@ -12,11 +13,12 @@ const ProductListItem = ({ item }: { item: any }) => {
           width: 300,
           marginBottom: 5,
         }}
+        ref={ref}
       >
         {name}
       </div>
     </Link>
   );
-};
+});
 
 export default ProductListItem;

@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const PRODUCTS_QUERY = gql`
   query ProductsQuery($after: String) {
-    products(first: 10, channel: "uk", after: $after) {
+    products(first: 15, channel: "uk", after: $after) {
       edges {
         node {
           id
@@ -15,6 +15,7 @@ export const PRODUCTS_QUERY = gql`
         endCursor
         hasNextPage
       }
+      totalCount
     }
   }
 `;
