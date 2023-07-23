@@ -7,7 +7,25 @@ export const PRODUCTS_QUERY = gql`
         node {
           id
           name
+          description
+          seoTitle
+          seoDescription
           slug
+          rating
+          thumbnail {
+            alt
+            url
+          }
+          pricing {
+            priceRange {
+              stop {
+                gross {
+                  currency
+                  amount
+                }
+              }
+            }
+          }
         }
         cursor
       }

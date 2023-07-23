@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import Loader from '../Loader';
-import { PRODUCTS_QUERY } from './gql';
+import { PRODUCTS_QUERY } from './queries';
 import {
   useRef,
   useCallback,
@@ -16,7 +16,7 @@ const Products = () => {
 
   if (loading) return <Loader />;
 
-  const items = data.products.edges.map((edge: any) => edge.node);
+  const items = data.products.edges.map((edge: { node: any }) => edge.node);
   const { hasNextPage, endCursor } = data.products.pageInfo;
 
   const handleMoreData = () => {

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import Loader from '../components/Loader';
-import { PRODUCT_QUERY } from './gql';
+import { PRODUCT_QUERY } from './queries';
 
 const Product = () => {
   const { query, back } = useRouter();
