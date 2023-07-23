@@ -8,6 +8,7 @@ import {
   // useEffect
 } from 'react';
 import ProductListItem from '../ProductListItem/index';
+import { INode } from '../../../interfaces';
 
 const Products = () => {
   const { data, loading, fetchMore } = useQuery(PRODUCTS_QUERY, {
@@ -16,7 +17,7 @@ const Products = () => {
 
   if (loading) return <Loader />;
 
-  const items = data.products.edges.map((edge: { node: any }) => edge.node);
+  const items = data.products.edges.map((edge: { node: INode }) => edge.node);
   const { hasNextPage, endCursor } = data.products.pageInfo;
 
   const handleMoreData = () => {
@@ -41,15 +42,14 @@ const Products = () => {
     hasNextPage,
     handleMoreData,
   }: {
-    items: any;
-    loading: boolean;
+    items: INode[];
     hasNextPage: boolean;
     handleMoreData: () => void;
   }) => {
-    const observer = useRef<any>();
+    const observer = useRef<IntersectionObserver | undefined>();
 
     const lastItem = useCallback(
-      (node: any) => {
+      (node: Element) => {
         if (observer.current) observer.current;
         observer.current = new IntersectionObserver((entries) => {
           if (entries[0].isIntersecting && hasNextPage) {
@@ -63,7 +63,7 @@ const Products = () => {
 
     return (
       <div>
-        {items.map((item: any, index: number) => {
+        {items.map((item: INode, index: number) => {
           const isLastItem = items.length === index + 1;
           if (isLastItem) {
             return (
@@ -84,7 +84,6 @@ const Products = () => {
   return (
     <ProductList
       items={items}
-      loading={loading}
       hasNextPage={hasNextPage}
       handleMoreData={handleMoreData}
     />
