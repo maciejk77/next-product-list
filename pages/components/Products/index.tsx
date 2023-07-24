@@ -1,12 +1,7 @@
 import { useQuery } from '@apollo/client';
 import Loader from '../Loader';
 import { PRODUCTS_QUERY } from './queries';
-import {
-  useRef,
-  useCallback,
-  // useState,
-  // useEffect
-} from 'react';
+import { useRef, useCallback } from 'react';
 import ProductListItem from '../ProductListItem/index';
 import { INode } from '../../../interfaces';
 
@@ -62,7 +57,14 @@ const Products = () => {
     );
 
     return (
-      <div>
+      <div
+        style={{
+          // border: '1px solid blue',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
         {items.map((item: INode, index: number) => {
           const isLastItem = items.length === index + 1;
           if (isLastItem) {
