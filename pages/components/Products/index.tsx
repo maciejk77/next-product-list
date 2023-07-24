@@ -59,7 +59,6 @@ const Products = () => {
     return (
       <div
         style={{
-          // border: '1px solid blue',
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',

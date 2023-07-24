@@ -1,31 +1,36 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Products from './components/Products';
-import styles from '../styles/Home.module.css';
+import { HomeContainer } from './styles';
+import { MainContainer } from './components/Main/styles';
 
 export default function Home() {
   return (
-    <div style={{ border: '1px solid black', margin: 5, minWidth: 320 }}>
+    <HomeContainer>
       <Head>
         <title>The Product List</title>
         <meta name="description" content="Next Product List" />
       </Head>
 
-      <main className={styles.main}>
-        <h2 className={styles.title}>Products</h2>
-        <div
-          style={{
-            border: '1px solid red',
+      <header
+        style={{
+          backgroundColor: 'black',
+          display: 'flex',
+          justifyContent: 'flex-start',
+          padding: '20px 20px 20px 50px',
+        }}
+      >
+        <Image
+          src={'/lush_logo_black.webp'}
+          height={50}
+          width={50 * 3.45}
+          alt="Lush Logo"
+        />
+      </header>
 
-            height: '67vh',
-            overflowY: 'scroll',
-            width: '98%',
-          }}
-        >
-          <Products />
-        </div>
-      </main>
-
-      <footer className={styles.footer}>Footer here</footer>
-    </div>
+      <MainContainer>
+        <Products />
+      </MainContainer>
+    </HomeContainer>
   );
 }
