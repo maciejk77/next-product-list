@@ -1,11 +1,18 @@
 import { useQuery } from '@apollo/client';
 import Loader from '../Loader';
 import { PRODUCTS_QUERY } from './queries';
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, FunctionComponent } from 'react';
 import ProductListItem from '../ProductListItem/index';
 import { INode } from '../../../interfaces';
+import { FlexWrap } from './styles';
 
-const Products = () => {
+interface IProductList {
+  items: INode[];
+  hasNextPage: boolean;
+  handleMoreData: () => void;
+}
+
+const Products: FunctionComponent = () => {
   const { data, loading, fetchMore } = useQuery(PRODUCTS_QUERY, {
     variables: { after: null },
   });
@@ -32,14 +39,10 @@ const Products = () => {
     });
   };
 
-  const ProductList = ({
+  const ProductList: FunctionComponent<IProductList> = ({
     items,
     hasNextPage,
     handleMoreData,
-  }: {
-    items: INode[];
-    hasNextPage: boolean;
-    handleMoreData: () => void;
   }) => {
     const observer = useRef<IntersectionObserver | undefined>();
 
@@ -57,13 +60,7 @@ const Products = () => {
     );
 
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-        }}
-      >
+      <FlexWrap>
         {items.map((item: INode, index: number) => {
           const isLastItem = items.length === index + 1;
           if (isLastItem) {
@@ -78,7 +75,7 @@ const Products = () => {
             return <ProductListItem key={`${item.id}-${index}`} item={item} />;
           }
         })}
-      </div>
+      </FlexWrap>
     );
   };
 

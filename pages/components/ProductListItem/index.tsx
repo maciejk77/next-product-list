@@ -3,9 +3,18 @@ import Image from 'next/image';
 import { forwardRef } from 'react';
 import Rating from '../Rating';
 import { INode } from '../../../interfaces';
+import {
+  CurrencyWrapper,
+  DescriptionWrapper,
+  RatingWrapper,
+  NameWrapper,
+  CardWrapper,
+  ImageWrapper,
+  Container,
+} from './styles';
 
 const ProductListItem = forwardRef(({ item }: { item: INode }, ref: any) => {
-  const { id, name, slug, thumbnail, rating, seoDescription, pricing } = item;
+  const { name, slug, thumbnail, rating, seoDescription, pricing } = item;
 
   const DEFAULT_IMAGE_URL = '/lush-logo-flowers.jpeg';
   const DEFAULT_ALT = 'Lush Product Image';
@@ -17,65 +26,34 @@ const ProductListItem = forwardRef(({ item }: { item: INode }, ref: any) => {
 
   return (
     <Link href={`/product/${slug}`}>
-      <div
-        style={{
-          width: 290,
-          margin: 20,
-        }}
-        ref={ref}
-      >
-        <Image
-          src={thumbnail?.url || DEFAULT_IMAGE_URL}
-          width={200}
-          height={200}
-          alt={thumbnail?.alt || DEFAULT_ALT}
-          style={{
-            display: 'flex',
+      <Container ref={ref}>
+        <ImageWrapper>
+          <Image
+            src={thumbnail?.url || DEFAULT_IMAGE_URL}
+            width={175}
+            height={175}
+            alt={thumbnail?.alt || DEFAULT_ALT}
+            style={{ borderRadius: 100 }}
+          />
+        </ImageWrapper>
 
-            borderRadius: 100,
-            position: 'relative',
-            top: 90,
-            margin: 'auto',
-          }}
-        />
+        <CardWrapper>
+          <NameWrapper>{name}</NameWrapper>
 
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'end',
-            backgroundColor: 'lightgray',
-            padding: 15,
-            borderRadius: 15,
-            // paddingTop: 60,
-            minHeight: 240,
-          }}
-        >
-          <div
-            style={{ fontSize: 20, fontWeight: 'bolder', padding: '10px 0' }}
-          >
-            {name}
-          </div>
-          <div style={{ display: 'flex', padding: '5px 0' }}>
+          <RatingWrapper>
             <Rating rating={rating} />
             <div>&nbsp;({rating ? rating.toFixed(1) : 0})</div>
-          </div>
+          </RatingWrapper>
 
-          <div
-            style={{
-              display: 'inline-block',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
+          <DescriptionWrapper>
             {seoDescription ? seoDescription : DEFAULT_TEXT}
-          </div>
-          <div style={{ fontWeight: 'bold', padding: '5px 0' }}>
+          </DescriptionWrapper>
+
+          <CurrencyWrapper>
             {isPound ? `£${formattedAmount}` : `${formattedAmount} ${currency}`}
-          </div>
-        </div>
-      </div>
+          </CurrencyWrapper>
+        </CardWrapper>
+      </Container>
     </Link>
   );
 });
