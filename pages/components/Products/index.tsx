@@ -5,6 +5,7 @@ import { useRef, useCallback, FunctionComponent } from 'react';
 import ProductListItem from '../ProductListItem/index';
 import { INode } from '../../../interfaces';
 import { FlexWrap } from './styles';
+// import { createApolloClient } from '../../../apollo';
 
 interface IProductList {
   items: INode[];
@@ -89,3 +90,18 @@ const Products: FunctionComponent = () => {
 };
 
 export default Products;
+
+// SSR not successful, error below to be resolved
+// Property 'fetchMore' does not exist on type 'ApolloQueryResult<any>'
+
+// export const getServerSideProps = async () => {
+//   const apolloClient = createApolloClient();
+//   const { data, loading, fetchMore } = await apolloClient.query({
+//     query: PRODUCTS_QUERY,
+//     variables: { after: null },
+//   });
+
+//   return {
+//     props: { data, loading, fetchMore },
+//   };
+// };
