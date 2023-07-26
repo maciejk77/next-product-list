@@ -15,7 +15,7 @@ const cache = new InMemoryCache({
   },
 });
 
-function createApolloClient() {
+export function createApolloClient() {
   return new ApolloClient({
     link: new HttpLink({
       uri: GRAPHQL_URI,

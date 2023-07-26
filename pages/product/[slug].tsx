@@ -1,5 +1,5 @@
+import { createApolloClient } from '../../apollo';
 import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/client';
 import Loader from '../components/Loader';
 import { PRODUCT_QUERY } from './queries';
 import Layout from '../components/Layout';
@@ -22,11 +22,8 @@ import {
   StyledBackIcon,
 } from './styles';
 
-const Product = () => {
-  const { query, back } = useRouter();
-  const { data, loading } = useQuery(PRODUCT_QUERY, {
-    variables: { slug: query['slug'] },
-  });
+const Product = ({ data, loading }: { data: any; loading: boolean }) => {
+  const { back } = useRouter();
 
   if (loading) return <Loader />;
 
@@ -120,3 +117,15 @@ const Product = () => {
 };
 
 export default Product;
+
+export const getServerSideProps = async ({ params }: any) => {
+  const apolloClient = createApolloClient();
+  const { data, loading } = await apolloClient.query({
+    query: PRODUCT_QUERY,
+    variables: { slug: params.slug },
+  });
+
+  return {
+    props: { data, loading },
+  };
+};
