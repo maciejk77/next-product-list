@@ -16,4 +16,4 @@ Clone the git repo and follow instruction below
 - GraphQL API has Relay-style cursor pagination
 - Apollo Client with hooks to be used to query data
 - Some items in data set with the same ID => hence [slug] for url query not [id], brittle in production?
-- Originally MVP had pagination on button click (sending cursor to GraphQL API), refactored to infinite scrolling (use of IntersectionObserver)
+- Initially MVP had pagination on button click (sending cursor to GraphQL API), refactored to infinite scrolling (use of IntersectionObserver)
