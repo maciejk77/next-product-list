@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 290px;
   margin: 10px;
-  height: 350px;
 `;
 
 export const ImageWrapper = styled.div`
   display: flex;
   position: relative;
-  top: 90px;
+  top: 70px;
   justify-content: center;
 `;
 
@@ -17,7 +16,7 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: end;
-  background-color: lightcoral;
+  background-color: coral;
   padding: 15px;
   border-radius: 15px;
   min-height: 240px;
@@ -36,9 +35,8 @@ export const RatingWrapper = styled.div`
 
 export const DescriptionWrapper = styled.div`
   display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  line-height: 1.5;
 `;
 
 export const CurrencyWrapper = styled.div`

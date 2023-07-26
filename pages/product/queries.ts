@@ -10,6 +10,12 @@ export const PRODUCT_QUERY = gql`
       seoDescription
       slug
       rating
+      category {
+        backgroundImage {
+          url
+          alt
+        }
+      }
       thumbnail {
         alt
         url

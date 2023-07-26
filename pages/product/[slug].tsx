@@ -7,6 +7,20 @@ import Rating from '../components/Rating/index';
 import Image from 'next/image';
 import { FlexRow } from '../styles';
 import { ScrollContainer } from '../styles';
+import {
+  CurrencyWrapper,
+  DescriptionWrapper,
+  NameWrapper,
+  RatingWrapper,
+} from '../components/ProductListItem/styles';
+import {
+  ContentItemWrapper,
+  ImageWrapper,
+  TextWrapper,
+  CardWrapper,
+  TopImageWrapper,
+  StyledBackIcon,
+} from './styles';
 
 const Product = () => {
   const { query, back } = useRouter();
@@ -16,12 +30,29 @@ const Product = () => {
 
   if (loading) return <Loader />;
 
-  const { name, rating, seoDescription, description, thumbnail, pricing } =
-    data.product;
+  const {
+    name,
+    rating,
+    seoDescription,
+    description,
+    thumbnail,
+    pricing,
+    category,
+  } = data.product;
+
+  const DEFAULT_BACKGROUND_IMAGE_URL =
+    'https://unicorn-staging.eu.saleor.cloud/media/category-backgrounds/solid_perfume_hero_2_2019_1.jpg';
+
+  const DEFAULT_IMAGE_URL = '/lush-logo-flowers.jpeg';
+  const DEFAULT_ALT = 'Lush Product Image';
 
   const { currency, amount } = pricing?.priceRange?.stop?.gross;
   const formattedAmount = amount.toFixed(2);
   const isPound = currency === 'GBP';
+  const formattedRating = <>&nbsp;({rating ? rating.toFixed(1) : 0})</>;
+  const formattedAmountCurrency = isPound
+    ? `£${formattedAmount}`
+    : `${formattedAmount} ${currency}`;
 
   const content = JSON.parse(description)?.blocks.map(
     ({ data }: { data: { text: string } }) => data
@@ -31,66 +62,57 @@ const Product = () => {
     <Layout
       main={
         <ScrollContainer>
-          <div
-            onClick={() => back()}
-            style={{
-              padding: 5,
-            }}
-          >
-            &#8678; back
-          </div>
-          <div
-            style={{
-              // border: '1px solid red',
-              margin: '10px 30px 30px',
-            }}
-          >
+          <TopImageWrapper>
+            <Image
+              src={
+                category?.backgroundImage?.url || DEFAULT_BACKGROUND_IMAGE_URL
+              }
+              alt={category?.backgroundImage?.alt || DEFAULT_ALT}
+              height={0}
+              width={0}
+              sizes="100vw"
+              style={{ width: '100%', height: 'auto' }}
+            />
+          </TopImageWrapper>
+
+          <StyledBackIcon onClick={() => back()}>&#8678;</StyledBackIcon>
+
+          <CardWrapper>
             <FlexRow>
-              <Image
-                src={thumbnail.url}
-                width={300}
-                height={300}
-                alt=""
-                // style={{ border: '1px solid green' }}
-              />
+              <ImageWrapper>
+                <Image
+                  src={thumbnail?.url || DEFAULT_IMAGE_URL}
+                  width={300}
+                  height={300}
+                  alt={thumbnail?.alt || DEFAULT_ALT}
+                />
+              </ImageWrapper>
 
-              <div
-                style={{
-                  // border: '1px dotted blue',
-                  width: '100%',
-                  padding: '10px 20px',
-                }}
-              >
-                <h1>{name}</h1>
-                <div style={{ marginBottom: 10 }}>{seoDescription}</div>
+              <TextWrapper>
+                <NameWrapper>
+                  <h1>{name}</h1>
+                </NameWrapper>
 
-                <FlexRow>
+                <DescriptionWrapper>{seoDescription}</DescriptionWrapper>
+
+                <RatingWrapper>
                   <Rating rating={rating} />
-                  <div>&nbsp;({rating ? rating.toFixed(1) : 0})</div>
-                </FlexRow>
+                  {formattedRating}
+                </RatingWrapper>
 
-                <div style={{ fontWeight: 'bold', padding: '5px 0' }}>
-                  {isPound
-                    ? `£${formattedAmount}`
-                    : `${formattedAmount} ${currency}`}
-                </div>
-              </div>
+                <CurrencyWrapper>{formattedAmountCurrency}</CurrencyWrapper>
+              </TextWrapper>
             </FlexRow>
 
-            <div>
+            <>
               {content?.map(({ text }: { text: string }, index: number) => (
-                <div
-                  style={{
-                    // border: '1px solid black',
-                    marginBottom: 20,
-                    padding: 10,
-                  }}
+                <ContentItemWrapper
                   key={`${text}=${index}`}
                   dangerouslySetInnerHTML={{ __html: text }}
                 />
               ))}
-            </div>
-          </div>
+            </>
+          </CardWrapper>
         </ScrollContainer>
       }
     />
