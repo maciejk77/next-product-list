@@ -7,6 +7,8 @@ interface IProps {
   main: ReactNode;
 }
 
+const LOGO_URL = '/lush_logo_black.webp';
+
 const Layout: FunctionComponent<IProps> = ({ main }) => {
   return (
     <div>
@@ -14,16 +16,11 @@ const Layout: FunctionComponent<IProps> = ({ main }) => {
       {/* <StyledHeader> */}
       <div style={{ backgroundColor: 'black', padding: '20px 20px 20px 50px' }}>
         <Link href="/">
-          <Image
-            src={'/lush_logo_black.webp'}
-            height={50}
-            width={50 * 3.45}
-            alt="Lush Logo"
-          />{' '}
+          <Image src={LOGO_URL} height={50} width={50 * 3.45} alt="Lush Logo" />
         </Link>
       </div>
       {/* </StyledHeader> */}
-      {main}
+      <div style={{ backgroundColor: 'antiquewhite' }}>{main}</div>
     </div>
   );
 };

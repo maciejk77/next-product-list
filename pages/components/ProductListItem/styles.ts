@@ -35,11 +35,14 @@ export const RatingWrapper = styled.div`
 
 export const DescriptionWrapper = styled.div`
   display: inline-block;
-
   line-height: 1.5;
 `;
 
 export const CurrencyWrapper = styled.div`
   font-weight: bold;
   padding: 5px 0;
+`;
+
+export const SpacerTop = styled.div`
+  padding: 20px 0;
 `;

@@ -11,6 +11,7 @@ import {
   CardWrapper,
   ImageWrapper,
   Container,
+  SpacerTop,
 } from './styles';
 
 const ProductListItem = forwardRef(({ item }: { item: INode }, ref: any) => {
@@ -23,6 +24,11 @@ const ProductListItem = forwardRef(({ item }: { item: INode }, ref: any) => {
   const { currency, amount } = pricing?.priceRange?.stop?.gross;
   const formattedAmount = amount.toFixed(2);
   const isPound = currency === 'GBP';
+
+  const formattedRating = <>&nbsp;({rating ? rating.toFixed(1) : 0})</>;
+  const formattedAmountCurrency = isPound
+    ? `£${formattedAmount}`
+    : `${formattedAmount} ${currency}`;
 
   return (
     <Link href={`/product/${slug}`}>
@@ -38,20 +44,19 @@ const ProductListItem = forwardRef(({ item }: { item: INode }, ref: any) => {
         </ImageWrapper>
 
         <CardWrapper>
+          <SpacerTop />
           <NameWrapper>{name}</NameWrapper>
 
           <RatingWrapper>
             <Rating rating={rating} />
-            <div>&nbsp;({rating ? rating.toFixed(1) : 0})</div>
+            {formattedRating}
           </RatingWrapper>
 
           <DescriptionWrapper>
             {seoDescription ? seoDescription : DEFAULT_TEXT}
           </DescriptionWrapper>
 
-          <CurrencyWrapper>
-            {isPound ? `£${formattedAmount}` : `${formattedAmount} ${currency}`}
-          </CurrencyWrapper>
+          <CurrencyWrapper>{formattedAmountCurrency}</CurrencyWrapper>
         </CardWrapper>
       </Container>
     </Link>
