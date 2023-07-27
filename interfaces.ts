@@ -1,6 +1,12 @@
 export interface INode {
   id: string;
   name: string;
+  category: {
+    backgroundImage: {
+      alt: string;
+      url: string;
+    };
+  };
   description: string;
   seoTitle: string;
   seoDescription: string;
