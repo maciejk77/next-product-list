@@ -1,5 +1,4 @@
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import { FlexRow } from '../../styles';
 
 const Rating = ({
   numberOfStars = 5,
@@ -11,7 +10,7 @@ const Rating = ({
   const starIds = Array.from({ length: numberOfStars }, (_, i) => i + 1);
 
   return (
-    <FlexRow>
+    <>
       {starIds.map((starId) => {
         const isActiveStar = starId <= Number(Math.round(rating));
 
@@ -31,7 +30,7 @@ const Rating = ({
           </div>
         );
       })}
-    </FlexRow>
+    </>
   );
 };
 

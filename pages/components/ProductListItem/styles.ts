@@ -10,6 +10,7 @@ export const ImageWrapper = styled.div`
   position: relative;
   top: 70px;
   justify-content: center;
+  z-index: 5;
 `;
 
 export const CardWrapper = styled.div`
@@ -20,16 +21,23 @@ export const CardWrapper = styled.div`
   padding: 15px;
   border-radius: 15px;
   min-height: 240px;
+  filter: drop-shadow(3px 3px 3px gray);
+  &:hover {
+    background-color: #ffa280;
+  }
 `;
 
 export const NameWrapper = styled.div`
   font-size: 20px;
   font-weight: bolder;
   padding: 10px 0;
+  display: flex;
+  justify-content: center;
 `;
 
 export const RatingWrapper = styled.div`
   display: flex;
+  justify-content: center;
   padding: 5px 0;
 `;
 
@@ -38,9 +46,17 @@ export const DescriptionWrapper = styled.div`
   line-height: 1.5;
 `;
 
-export const CurrencyWrapper = styled.div`
+export const CurrencyWrapper = styled.div<{ productpage?: boolean }>`
   font-weight: bold;
-  padding: 5px 0;
+  display: flex;
+  padding: 10px 15px;
+  align-self: end;
+  margin-top: 10px;
+  justify-content: ${(p) => (p.productpage ? 'center' : 'flex-end')};
+  border-radius: ${(p) => (p.productpage ? '0' : '50px')};
+  background-color: ${(p) => (p.productpage ? 'black' : 'antiquewhite')};
+  color: ${(p) => (p.productpage ? 'white' : 'black')};
+  width: ${(p) => p.productpage && '30%'};
 `;
 
 export const SpacerTop = styled.div`

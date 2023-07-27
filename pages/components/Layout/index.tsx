@@ -1,3 +1,4 @@
+import React from 'react';
 import { FunctionComponent, ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +12,7 @@ const LOGO_URL = '/lush_logo_black.webp';
 
 const Layout: FunctionComponent<IProps> = ({ main }) => {
   return (
-    <div>
+    <div style={{ minWidth: 320 }}>
       {/* inline below, styled not working */}
       {/* <StyledHeader> */}
       <div style={{ backgroundColor: 'black', padding: '20px 20px 20px 50px' }}>
@@ -20,7 +21,14 @@ const Layout: FunctionComponent<IProps> = ({ main }) => {
         </Link>
       </div>
       {/* </StyledHeader> */}
-      <div style={{ backgroundColor: 'antiquewhite' }}>{main}</div>
+      <div
+        style={{
+          backgroundColor: 'antiquewhite',
+          overflowY: 'scroll',
+        }}
+      >
+        {main}
+      </div>
     </div>
   );
 };

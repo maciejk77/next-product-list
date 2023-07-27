@@ -1,3 +1,4 @@
+import React from 'react';
 import { createApolloClient } from '../../apollo';
 import { useRouter } from 'next/router';
 import Loader from '../components/Loader';
@@ -7,6 +8,7 @@ import Rating from '../components/Rating/index';
 import Image from 'next/image';
 import { FlexRow } from '../styles';
 import { ScrollContainer } from '../styles';
+import { IProduct } from '../../interfaces';
 import {
   CurrencyWrapper,
   DescriptionWrapper,
@@ -20,9 +22,10 @@ import {
   CardWrapper,
   TopImageWrapper,
   StyledBackIcon,
+  FlexCenter,
 } from './styles';
 
-const Product = ({ data, loading }: { data: any; loading: boolean }) => {
+const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
   const { back } = useRouter();
 
   if (loading) return <Loader />;
@@ -65,10 +68,14 @@ const Product = ({ data, loading }: { data: any; loading: boolean }) => {
                 category?.backgroundImage?.url || DEFAULT_BACKGROUND_IMAGE_URL
               }
               alt={category?.backgroundImage?.alt || DEFAULT_ALT}
-              height={0}
-              width={0}
+              height={300}
+              width={300}
               sizes="100vw"
-              style={{ width: '100%', height: 'auto' }}
+              style={{
+                width: '100vw',
+                height: 'auto',
+                marginTop: '-20px',
+              }}
             />
           </TopImageWrapper>
 
@@ -79,8 +86,8 @@ const Product = ({ data, loading }: { data: any; loading: boolean }) => {
               <ImageWrapper>
                 <Image
                   src={thumbnail?.url || DEFAULT_IMAGE_URL}
-                  width={300}
-                  height={300}
+                  width={250}
+                  height={250}
                   alt={thumbnail?.alt || DEFAULT_ALT}
                 />
               </ImageWrapper>
@@ -97,7 +104,11 @@ const Product = ({ data, loading }: { data: any; loading: boolean }) => {
                   {formattedRating}
                 </RatingWrapper>
 
-                <CurrencyWrapper>{formattedAmountCurrency}</CurrencyWrapper>
+                <FlexCenter>
+                  <CurrencyWrapper productpage>
+                    {formattedAmountCurrency}
+                  </CurrencyWrapper>
+                </FlexCenter>
               </TextWrapper>
             </FlexRow>
 
@@ -118,11 +129,13 @@ const Product = ({ data, loading }: { data: any; loading: boolean }) => {
 
 export default Product;
 
-export const getServerSideProps = async ({ params }: any) => {
+export const getServerSideProps = async (context: {
+  params: { slug: string };
+}) => {
   const apolloClient = createApolloClient();
   const { data, loading } = await apolloClient.query({
     query: PRODUCT_QUERY,
-    variables: { slug: params.slug },
+    variables: { slug: context.params.slug },
   });
 
   return {
