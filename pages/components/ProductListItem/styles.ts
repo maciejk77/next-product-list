@@ -46,16 +46,17 @@ export const DescriptionWrapper = styled.div`
   line-height: 1.5;
 `;
 
-export const CurrencyWrapper = styled.div<{ productPage?: boolean }>`
+export const CurrencyWrapper = styled.div<{ productpage?: boolean }>`
   font-weight: bold;
   display: flex;
   padding: 10px 15px;
   align-self: end;
   margin-top: 10px;
-  justify-content: ${(p) => (p.productPage ? 'center' : 'flex-end')};
-  border-radius: ${(p) => (p.productPage ? '0' : '50px')};
-  background-color: ${(p) => (p.productPage ? 'black' : 'antiquewhite')};
-  color: ${(p) => (p.productPage ? 'white' : 'black')};
+  justify-content: ${(p) => (p.productpage ? 'center' : 'flex-end')};
+  border-radius: ${(p) => (p.productpage ? '0' : '50px')};
+  background-color: ${(p) => (p.productpage ? 'black' : 'antiquewhite')};
+  color: ${(p) => (p.productpage ? 'white' : 'black')};
+  width: ${(p) => p.productpage && '30%'};
 `;
 
 export const SpacerTop = styled.div`

@@ -50,3 +50,8 @@ export const StyledBackIcon = styled.div`
   color: white;
   font-size: 20px;
 `;
+
+export const FlexCenter = styled.div`
+  display: flex;
+  justify-content: center;
+`;

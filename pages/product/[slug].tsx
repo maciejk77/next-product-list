@@ -1,3 +1,4 @@
+import React from 'react';
 import { createApolloClient } from '../../apollo';
 import { useRouter } from 'next/router';
 import Loader from '../components/Loader';
@@ -21,6 +22,7 @@ import {
   CardWrapper,
   TopImageWrapper,
   StyledBackIcon,
+  FlexCenter,
 } from './styles';
 
 const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
@@ -70,7 +72,7 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               width={300}
               sizes="100vw"
               style={{
-                width: '100%',
+                width: '100vw',
                 height: 'auto',
                 marginTop: '-20px',
               }}
@@ -102,9 +104,11 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
                   {formattedRating}
                 </RatingWrapper>
 
-                <CurrencyWrapper productPage>
-                  {formattedAmountCurrency}
-                </CurrencyWrapper>
+                <FlexCenter>
+                  <CurrencyWrapper productpage>
+                    {formattedAmountCurrency}
+                  </CurrencyWrapper>
+                </FlexCenter>
               </TextWrapper>
             </FlexRow>
 
