@@ -45,6 +45,5 @@ export const StyledBackIcon = styled.div`
   z-index: 3;
   background-color: black;
   color: white;
-  margin-top: 20px;
   font-size: 20px;
 `;
