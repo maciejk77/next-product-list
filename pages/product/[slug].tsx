@@ -69,7 +69,11 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               height={300}
               width={300}
               sizes="100vw"
-              style={{ width: '100%', height: 'auto' }}
+              style={{
+                width: '100%',
+                height: 'auto',
+                marginTop: '-20px',
+              }}
             />
           </TopImageWrapper>
 

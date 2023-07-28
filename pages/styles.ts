@@ -16,5 +16,4 @@ export const FlexRow = styled.div`
 
 export const ScrollContainer = styled.div`
   height: 90vh;
-  overflow-y: scroll;
 `;

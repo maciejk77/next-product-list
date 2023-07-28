@@ -20,7 +20,14 @@ const Layout: FunctionComponent<IProps> = ({ main }) => {
         </Link>
       </div>
       {/* </StyledHeader> */}
-      <div style={{ backgroundColor: 'antiquewhite' }}>{main}</div>
+      <div
+        style={{
+          backgroundColor: 'antiquewhite',
+          overflowY: 'scroll',
+        }}
+      >
+        {main}
+      </div>
     </div>
   );
 };
