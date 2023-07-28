@@ -7,6 +7,7 @@ import Rating from '../components/Rating/index';
 import Image from 'next/image';
 import { FlexRow } from '../styles';
 import { ScrollContainer } from '../styles';
+import { IEdge, IProduct } from '../../interfaces';
 import {
   CurrencyWrapper,
   DescriptionWrapper,
@@ -22,7 +23,7 @@ import {
   StyledBackIcon,
 } from './styles';
 
-const Product = ({ data, loading }: { data: any; loading: boolean }) => {
+const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
   const { back } = useRouter();
 
   if (loading) return <Loader />;
@@ -118,11 +119,13 @@ const Product = ({ data, loading }: { data: any; loading: boolean }) => {
 
 export default Product;
 
-export const getServerSideProps = async ({ params }: any) => {
+export const getServerSideProps = async (context: {
+  params: { slug: string };
+}) => {
   const apolloClient = createApolloClient();
   const { data, loading } = await apolloClient.query({
     query: PRODUCT_QUERY,
-    variables: { slug: params.slug },
+    variables: { slug: context.params.slug },
   });
 
   return {

@@ -14,8 +14,12 @@ import {
   SpacerTop,
 } from './styles';
 
-const ProductListItem = forwardRef(({ item }: { item: INode }, ref: any) => {
-  const { name, slug, thumbnail, rating, seoDescription, pricing } = item;
+interface IProps {
+  item: INode;
+}
+
+const ProductListItem = forwardRef((props: IProps, ref: any) => {
+  const { name, slug, thumbnail, rating, seoDescription, pricing } = props.item;
 
   const DEFAULT_IMAGE_URL = '/lush-logo-flowers.jpeg';
   const DEFAULT_ALT = 'Lush Product Image';

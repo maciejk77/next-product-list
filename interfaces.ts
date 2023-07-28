@@ -28,6 +28,10 @@ export interface INode {
   };
 }
 
+export interface IProduct {
+  product: INode;
+}
+
 export interface IEdge {
   node: INode;
   cursor: string;
