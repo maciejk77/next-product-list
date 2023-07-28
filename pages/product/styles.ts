@@ -18,9 +18,12 @@ export const TextWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   position: relative;
   background-color: coral;
   z-index: 2;
+  padding: 25px 0;
 `;
 
 export const CardWrapper = styled.div`

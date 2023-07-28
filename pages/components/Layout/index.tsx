@@ -11,7 +11,7 @@ const LOGO_URL = '/lush_logo_black.webp';
 
 const Layout: FunctionComponent<IProps> = ({ main }) => {
   return (
-    <div>
+    <div style={{ minWidth: 320 }}>
       {/* inline below, styled not working */}
       {/* <StyledHeader> */}
       <div style={{ backgroundColor: 'black', padding: '20px 20px 20px 50px' }}>

@@ -7,7 +7,7 @@ import Rating from '../components/Rating/index';
 import Image from 'next/image';
 import { FlexRow } from '../styles';
 import { ScrollContainer } from '../styles';
-import { IEdge, IProduct } from '../../interfaces';
+import { IProduct } from '../../interfaces';
 import {
   CurrencyWrapper,
   DescriptionWrapper,
@@ -66,8 +66,8 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
                 category?.backgroundImage?.url || DEFAULT_BACKGROUND_IMAGE_URL
               }
               alt={category?.backgroundImage?.alt || DEFAULT_ALT}
-              height={0}
-              width={0}
+              height={300}
+              width={300}
               sizes="100vw"
               style={{ width: '100%', height: 'auto' }}
             />
@@ -80,8 +80,8 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               <ImageWrapper>
                 <Image
                   src={thumbnail?.url || DEFAULT_IMAGE_URL}
-                  width={300}
-                  height={300}
+                  width={250}
+                  height={250}
                   alt={thumbnail?.alt || DEFAULT_ALT}
                 />
               </ImageWrapper>
