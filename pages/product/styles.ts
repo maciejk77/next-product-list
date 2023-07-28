@@ -7,6 +7,7 @@ export const ContentItemWrapper = styled.div`
   position: relative;
   z-index: 5;
   line-height: 1.5;
+  filter: drop-shadow(3px 3px 3px gray);
 `;
 
 export const TextWrapper = styled.div`
@@ -15,6 +16,7 @@ export const TextWrapper = styled.div`
   position: relative;
   background-color: white;
   z-index: 3;
+  filter: drop-shadow(3px 3px 3px gray);
 `;
 
 export const ImageWrapper = styled.div`
@@ -24,6 +26,7 @@ export const ImageWrapper = styled.div`
   background-color: coral;
   z-index: 2;
   padding: 25px 0;
+  filter: drop-shadow(3px 3px 3px gray);
 `;
 
 export const CardWrapper = styled.div`
