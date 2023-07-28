@@ -10,6 +10,7 @@ export const ImageWrapper = styled.div`
   position: relative;
   top: 70px;
   justify-content: center;
+  z-index: 5;
 `;
 
 export const CardWrapper = styled.div`
@@ -20,6 +21,10 @@ export const CardWrapper = styled.div`
   padding: 15px;
   border-radius: 15px;
   min-height: 240px;
+  filter: drop-shadow(3px 3px 3px gray);
+  &:hover {
+    background-color: #ffa280;
+  }
 `;
 
 export const NameWrapper = styled.div`
@@ -44,7 +49,6 @@ export const DescriptionWrapper = styled.div`
 export const CurrencyWrapper = styled.div<{ productPage: boolean }>`
   font-weight: bold;
   display: flex;
-  // background-color: antiquewhite;
   padding: 10px 15px;
   align-self: end;
   margin-top: 10px;
