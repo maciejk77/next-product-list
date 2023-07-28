@@ -46,7 +46,7 @@ export const DescriptionWrapper = styled.div`
   line-height: 1.5;
 `;
 
-export const CurrencyWrapper = styled.div<{ productPage: boolean }>`
+export const CurrencyWrapper = styled.div<{ productPage?: boolean }>`
   font-weight: bold;
   display: flex;
   padding: 10px 15px;
