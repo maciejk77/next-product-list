@@ -102,7 +102,9 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
                   {formattedRating}
                 </RatingWrapper>
 
-                <CurrencyWrapper>{formattedAmountCurrency}</CurrencyWrapper>
+                <CurrencyWrapper productPage>
+                  {formattedAmountCurrency}
+                </CurrencyWrapper>
               </TextWrapper>
             </FlexRow>
 

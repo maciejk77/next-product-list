@@ -26,10 +26,13 @@ export const NameWrapper = styled.div`
   font-size: 20px;
   font-weight: bolder;
   padding: 10px 0;
+  display: flex;
+  justify-content: center;
 `;
 
 export const RatingWrapper = styled.div`
   display: flex;
+  justify-content: center;
   padding: 5px 0;
 `;
 
@@ -38,9 +41,17 @@ export const DescriptionWrapper = styled.div`
   line-height: 1.5;
 `;
 
-export const CurrencyWrapper = styled.div`
+export const CurrencyWrapper = styled.div<{ productPage: boolean }>`
   font-weight: bold;
-  padding: 5px 0;
+  display: flex;
+  // background-color: antiquewhite;
+  padding: 10px 15px;
+  align-self: end;
+  margin-top: 10px;
+  justify-content: ${(p) => (p.productPage ? 'center' : 'flex-end')};
+  border-radius: ${(p) => (p.productPage ? '0' : '50px')};
+  background-color: ${(p) => (p.productPage ? 'black' : 'antiquewhite')};
+  color: ${(p) => (p.productPage ? 'white' : 'black')};
 `;
 
 export const SpacerTop = styled.div`
