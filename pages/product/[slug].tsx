@@ -90,6 +90,7 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
                   width={250}
                   height={250}
                   alt={thumbnail?.alt || DEFAULT_ALT}
+                  style={{ borderRadius: 150, padding: 10 }}
                 />
               </ImageWrapper>
 
