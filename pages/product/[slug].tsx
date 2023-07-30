@@ -23,6 +23,7 @@ import {
   TopImageWrapper,
   StyledBackIcon,
   FlexCenter,
+  ContentWrapper,
 } from './styles';
 
 const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
@@ -93,9 +94,7 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               </ImageWrapper>
 
               <TextWrapper>
-                <NameWrapper>
-                  <h1>{name}</h1>
-                </NameWrapper>
+                <NameWrapper>{name}</NameWrapper>
 
                 <DescriptionWrapper>{seoDescription}</DescriptionWrapper>
 
@@ -112,14 +111,14 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               </TextWrapper>
             </FlexRow>
 
-            <>
+            <ContentWrapper>
               {content?.map(({ text }: { text: string }, index: number) => (
                 <ContentItemWrapper
                   key={`${text}=${index}`}
                   dangerouslySetInnerHTML={{ __html: text }}
                 />
               ))}
-            </>
+            </ContentWrapper>
           </CardWrapper>
         </ScrollContainer>
       }

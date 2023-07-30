@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
+export const ContentWrapper = styled.div`
+z-index: 5,
+margin-bottom: 30px
+`;
+
 export const ContentItemWrapper = styled.div`
-  margin: 10px 0;
   background-color: white;
   padding: 20px;
   position: relative;
   z-index: 5;
   line-height: 1.5;
-  filter: drop-shadow(3px 3px 3px gray);
 `;
 
 export const TextWrapper = styled.div`
@@ -16,17 +19,16 @@ export const TextWrapper = styled.div`
   position: relative;
   background-color: white;
   z-index: 3;
-  filter: drop-shadow(3px 3px 3px gray);
 `;
 
 export const ImageWrapper = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
   position: relative;
   background-color: coral;
   z-index: 2;
   padding: 25px 0;
-  filter: drop-shadow(3px 3px 3px gray);
 `;
 
 export const CardWrapper = styled.div`
@@ -35,6 +37,7 @@ export const CardWrapper = styled.div`
   justify-content: center;
   width: 75%;
   margin: 20px auto;
+  margin-bottom: 50px;
 `;
 
 export const TopImageWrapper = styled.div`

@@ -2,6 +2,7 @@ import React from 'react';
 import { FunctionComponent, ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { LayoutWrapper, MainWrapper } from './styles';
 // import { StyledHeader } from './styles';
 
 interface IProps {
@@ -21,14 +22,24 @@ const Layout: FunctionComponent<IProps> = ({ main }) => {
         </Link>
       </div>
       {/* </StyledHeader> */}
-      <div
-        style={{
-          backgroundColor: 'antiquewhite',
-          overflowY: 'scroll',
-        }}
-      >
-        {main}
-      </div>
+      <LayoutWrapper>
+        <MainWrapper>
+          <Image
+            src={'/lush-background.jpeg'}
+            alt={'Lush background'}
+            width={400}
+            height={400}
+            style={{
+              width: '100vw',
+              height: 'auto',
+              marginTop: '-20px',
+              position: 'absolute',
+            }}
+          />
+
+          <div>{main}</div>
+        </MainWrapper>
+      </LayoutWrapper>
     </div>
   );
 };
