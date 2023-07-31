@@ -57,8 +57,9 @@ export const CurrencyWrapper = styled.div<{ productpage?: boolean }>`
   margin: 10px;
   justify-content: center;
   border-radius: ${(p) => (p.productpage ? '0' : '50px')};
-  background-color: ${(p) => (p.productpage ? 'black' : 'coral')};
+  background-color: coral;
   color: ${(p) => (p.productpage ? 'white' : 'antiquewhite')};
+  width: ${(p) => p.productpage && '30%'};
 `;
 
 export const FlexEnd = styled.div`

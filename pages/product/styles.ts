@@ -14,8 +14,11 @@ export const ContentItemWrapper = styled.div`
 `;
 
 export const TextWrapper = styled.div`
+  align-items: center;
   background-color: white;
-  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
   position: relative;
   width: 100%;
   z-index: 3;
@@ -35,7 +38,7 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px auto;
+  margin: 40px auto;
   margin-bottom: 50px;
   width: 75%;
 `;
@@ -49,7 +52,7 @@ export const StyledBackIcon = styled.div`
   background-color: black;
   color: white;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
   padding: 10px;
   position: fixed;
   z-index: 3;

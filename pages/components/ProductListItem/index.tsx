@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { forwardRef } from 'react';
 import Rating from '../Rating';
 import { INode } from '../../../interfaces';
+import { formattedAmount, formattedRating } from '../../../helpers';
 import {
   Card,
   ContentWrapper,
@@ -27,13 +28,6 @@ const ProductListItem = forwardRef((props: IProps, ref: any) => {
   const DEFAULT_TEXT = 'Find out more about this product';
 
   const { currency, amount } = pricing?.priceRange?.stop?.gross;
-  const formattedAmount = amount.toFixed(2);
-  const isPound = currency === 'GBP';
-
-  const formattedRating = <>&nbsp;({rating ? rating.toFixed(1) : 0})</>;
-  const formattedAmountCurrency = isPound
-    ? `£${formattedAmount}`
-    : `${formattedAmount} ${currency}`;
 
   return (
     <Link href={`/product/${slug}`}>
@@ -53,7 +47,7 @@ const ProductListItem = forwardRef((props: IProps, ref: any) => {
 
           <RatingWrapper>
             <Rating rating={rating} />
-            <div>{formattedRating}</div>
+            <div>{formattedRating(rating)}</div>
           </RatingWrapper>
 
           <DescriptionWrapper>
@@ -61,7 +55,9 @@ const ProductListItem = forwardRef((props: IProps, ref: any) => {
           </DescriptionWrapper>
 
           <FlexEnd>
-            <CurrencyWrapper>{formattedAmountCurrency}</CurrencyWrapper>
+            <CurrencyWrapper>
+              {formattedAmount(amount, currency)}
+            </CurrencyWrapper>
           </FlexEnd>
         </ContentWrapper>
       </Card>

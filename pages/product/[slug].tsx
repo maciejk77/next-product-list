@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import Rating from '../components/Rating/index';
 import Image from 'next/image';
 import { IProduct } from '../../interfaces';
+import { formattedAmount, formattedRating } from '../../helpers';
 import {
   CurrencyWrapper,
   DescriptionWrapper,
@@ -39,19 +40,11 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
     category,
   } = data.product;
 
-  const DEFAULT_BACKGROUND_IMAGE_URL =
-    'https://unicorn-staging.eu.saleor.cloud/media/category-backgrounds/solid_perfume_hero_2_2019_1.jpg';
-
+  const DEFAULT_BACKGROUND_IMAGE_URL = '/solid_perfume_hero.jpg';
   const DEFAULT_IMAGE_URL = '/lush-logo-flowers.jpeg';
   const DEFAULT_ALT = 'Lush Product Image';
 
   const { currency, amount } = pricing?.priceRange?.stop?.gross;
-  const formattedAmount = amount.toFixed(2);
-  const isPound = currency === 'GBP';
-  const formattedRating = <>&nbsp;({rating ? rating.toFixed(1) : 0})</>;
-  const formattedAmountCurrency = isPound
-    ? `£${formattedAmount}`
-    : `${formattedAmount} ${currency}`;
 
   const content = JSON.parse(description)?.blocks.map(
     ({ data }: { data: { text: string } }) => data
@@ -100,11 +93,11 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
 
                 <RatingWrapper>
                   <Rating rating={rating} />
-                  {formattedRating}
+                  {formattedRating(rating)}
                 </RatingWrapper>
 
                 <CurrencyWrapper productpage>
-                  {formattedAmountCurrency}
+                  {formattedAmount(amount, currency)}
                 </CurrencyWrapper>
               </TextWrapper>
             </HeaderWrapper>
