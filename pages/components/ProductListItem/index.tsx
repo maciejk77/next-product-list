@@ -5,14 +5,14 @@ import { forwardRef } from 'react';
 import Rating from '../Rating';
 import { INode } from '../../../interfaces';
 import {
-  CurrencyWrapper,
-  DescriptionWrapper,
-  RatingWrapper,
-  NameWrapper,
-  CardWrapper,
+  Card,
+  ContentWrapper,
   ImageWrapper,
-  Container,
-  SpacerTop,
+  NameWrapper,
+  RatingWrapper,
+  DescriptionWrapper,
+  CurrencyWrapper,
+  FlexEnd,
 } from './styles';
 
 interface IProps {
@@ -37,33 +37,34 @@ const ProductListItem = forwardRef((props: IProps, ref: any) => {
 
   return (
     <Link href={`/product/${slug}`}>
-      <Container ref={ref}>
-        <ImageWrapper>
-          <Image
-            src={thumbnail?.url || DEFAULT_IMAGE_URL}
-            width={175}
-            height={175}
-            alt={thumbnail?.alt || DEFAULT_ALT}
-            style={{ borderRadius: 100 }}
-          />
-        </ImageWrapper>
+      <Card ref={ref}>
+        <ContentWrapper>
+          <ImageWrapper>
+            <Image
+              src={thumbnail?.url || DEFAULT_IMAGE_URL}
+              width={170}
+              height={170}
+              alt={thumbnail?.alt || DEFAULT_ALT}
+              style={{ borderRadius: '100px' }}
+            />
+          </ImageWrapper>
 
-        <CardWrapper>
-          <SpacerTop />
           <NameWrapper>{name}</NameWrapper>
 
           <RatingWrapper>
             <Rating rating={rating} />
-            {formattedRating}
+            <div>{formattedRating}</div>
           </RatingWrapper>
 
           <DescriptionWrapper>
             {seoDescription ? seoDescription : DEFAULT_TEXT}
           </DescriptionWrapper>
 
-          <CurrencyWrapper>{formattedAmountCurrency}</CurrencyWrapper>
-        </CardWrapper>
-      </Container>
+          <FlexEnd>
+            <CurrencyWrapper>{formattedAmountCurrency}</CurrencyWrapper>
+          </FlexEnd>
+        </ContentWrapper>
+      </Card>
     </Link>
   );
 });

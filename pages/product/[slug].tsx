@@ -6,8 +6,6 @@ import { PRODUCT_QUERY } from './queries';
 import Layout from '../components/Layout';
 import Rating from '../components/Rating/index';
 import Image from 'next/image';
-import { FlexRow } from '../styles';
-import { ScrollContainer } from '../styles';
 import { IProduct } from '../../interfaces';
 import {
   CurrencyWrapper,
@@ -22,8 +20,8 @@ import {
   CardWrapper,
   TopImageWrapper,
   StyledBackIcon,
-  FlexCenter,
   ContentWrapper,
+  HeaderWrapper,
 } from './styles';
 
 const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
@@ -62,7 +60,7 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
   return (
     <Layout
       main={
-        <ScrollContainer>
+        <>
           <TopImageWrapper>
             <Image
               src={
@@ -75,7 +73,8 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               style={{
                 width: '100vw',
                 height: 'auto',
-                marginTop: '-20px',
+                color: 'black',
+                borderBottom: '2px dashed',
               }}
             />
           </TopImageWrapper>
@@ -83,7 +82,7 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
           <StyledBackIcon onClick={() => back()}>&#8678;</StyledBackIcon>
 
           <CardWrapper>
-            <FlexRow>
+            <HeaderWrapper>
               <ImageWrapper>
                 <Image
                   src={thumbnail?.url || DEFAULT_IMAGE_URL}
@@ -95,7 +94,7 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               </ImageWrapper>
 
               <TextWrapper>
-                <NameWrapper>{name}</NameWrapper>
+                <NameWrapper productpage>{name}</NameWrapper>
 
                 <DescriptionWrapper>{seoDescription}</DescriptionWrapper>
 
@@ -104,13 +103,11 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
                   {formattedRating}
                 </RatingWrapper>
 
-                <FlexCenter>
-                  <CurrencyWrapper productpage>
-                    {formattedAmountCurrency}
-                  </CurrencyWrapper>
-                </FlexCenter>
+                <CurrencyWrapper productpage>
+                  {formattedAmountCurrency}
+                </CurrencyWrapper>
               </TextWrapper>
-            </FlexRow>
+            </HeaderWrapper>
 
             <ContentWrapper>
               {content?.map(({ text }: { text: string }, index: number) => (
@@ -121,7 +118,7 @@ const Product = ({ data, loading }: { data: IProduct; loading: boolean }) => {
               ))}
             </ContentWrapper>
           </CardWrapper>
-        </ScrollContainer>
+        </>
       }
     />
   );

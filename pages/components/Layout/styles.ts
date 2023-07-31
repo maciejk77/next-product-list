@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
-export const StyledHeader = styled.div`
+export const HeaderWrapper = styled.div`
+  align-items: center;
   background-color: black;
-  padding: 20px 20px 20px 50px;
+  display: flex;
+  height: 80px;
+  padding-left: 50px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 `;
 
 export const LayoutWrapper = styled.div`
-  z-index: 5;
   background-color: #ef6e93;
-  overflow-y: scroll;
-`;
-
-export const MainWrapper = styled.div`
-  position: relative;
+  padding-top: 80px;
+  z-index: 5;
 `;
