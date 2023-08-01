@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import Loader from '../Loader';
 import { PRODUCTS_QUERY } from './queries';
 import { useRef, useCallback, FunctionComponent } from 'react';
-import ProductListItem from '../ProductListItem/index';
+import ProductItem from '../ProductItem/index';
 import { INode } from '../../../interfaces';
 import { FlexWrap } from './styles';
 // import { createApolloClient } from '../../../apollo';
@@ -66,14 +66,14 @@ const Products: FunctionComponent = () => {
           const isLastItem = items.length === index + 1;
           if (isLastItem) {
             return (
-              <ProductListItem
+              <ProductItem
                 ref={lastItem}
                 key={`${item.id}-${index}`}
                 item={item}
               />
             );
           } else {
-            return <ProductListItem key={`${item.id}-${index}`} item={item} />;
+            return <ProductItem key={`${item.id}-${index}`} item={item} />;
           }
         })}
       </FlexWrap>

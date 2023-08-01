@@ -20,7 +20,7 @@ interface IProps {
   item: INode;
 }
 
-const ProductListItem = forwardRef((props: IProps, ref: any) => {
+const ProductItem = forwardRef((props: IProps, ref: any) => {
   const { name, slug, thumbnail, rating, seoDescription, pricing } = props.item;
 
   const DEFAULT_IMAGE_URL = '/lush-logo-flowers.jpeg';
@@ -65,4 +65,4 @@ const ProductListItem = forwardRef((props: IProps, ref: any) => {
   );
 });
 
-export default ProductListItem;
+export default ProductItem;

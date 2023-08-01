@@ -13,7 +13,7 @@ import {
   DescriptionWrapper,
   NameWrapper,
   RatingWrapper,
-} from '../components/ProductListItem/styles';
+} from '../components/ProductItem/styles';
 import {
   ContentItemWrapper,
   ImageWrapper,
