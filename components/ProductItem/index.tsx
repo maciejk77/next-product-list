@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { forwardRef } from 'react';
 import Rating from '../Rating';
-import { INode } from '../../../interfaces';
-import { formattedAmount, formattedRating } from '../../../helpers';
+import { INode } from '../../interfaces';
+import { formattedAmount, formattedRating } from '../../helpers';
 import {
   Card,
   ContentWrapper,

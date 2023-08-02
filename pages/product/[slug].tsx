@@ -1,10 +1,10 @@
 import React from 'react';
 import { createApolloClient } from '../../apollo';
 import { useRouter } from 'next/router';
-import Loader from '../components/Loader';
+import Loader from '../../components/Loader';
 import { PRODUCT_QUERY } from './queries';
-import Layout from '../components/Layout';
-import Rating from '../components/Rating/index';
+import Layout from '../../components/Layout';
+import Rating from '../../components/Rating/index';
 import Image from 'next/image';
 import { IProduct } from '../../interfaces';
 import { formattedAmount, formattedRating } from '../../helpers';
@@ -13,7 +13,7 @@ import {
   DescriptionWrapper,
   NameWrapper,
   RatingWrapper,
-} from '../components/ProductItem/styles';
+} from '../../components/ProductItem/styles';
 import {
   ContentItemWrapper,
   ImageWrapper,
