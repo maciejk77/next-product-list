@@ -17,3 +17,7 @@ Clone the git repo and follow instruction below
 - Apollo Client with hooks to be used to query data
 - Some items in data set with the same ID => hence [slug] for url query not [id], brittle in production?
 - Initially MVP had pagination on button click (sending cursor to GraphQL API), refactored to infinite scrolling (use of IntersectionObserver)
+
+## Screenshot
+
+<img src="public/screenshot.png" width="800">
