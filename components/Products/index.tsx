@@ -3,9 +3,8 @@ import Loader from '../Loader';
 import { PRODUCTS_QUERY } from './queries';
 import { useRef, useCallback, FunctionComponent } from 'react';
 import ProductItem from '../ProductItem/index';
-import { INode } from '../../../interfaces';
+import { INode } from '../../interfaces';
 import { FlexWrap } from './styles';
-// import { createApolloClient } from '../../../apollo';
 
 interface IProductList {
   items: INode[];
