@@ -1,5 +1,6 @@
 module.exports = {
   images: {
+    domains: ['unicorn-staging.eu.saleor.cloud'],
     remotePatterns: [
       {
         protocol: 'https',
